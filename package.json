@@ -10,7 +10,8 @@
   },
   "scripts": {
     "start": "node server",
-    "test": "karma start --single-run"
+    "test": "karma start --single-run",
+    "postinstall": "bower cache clean && bower install"
   },
   "devDependencies": {
     "jasmine": "^2.4.1",
@@ -20,6 +21,7 @@
     "karma-ng-html2js-preprocessor": "^1.0.0"
   },
   "dependencies": {
+    "bower": "^1.7.9",
     "express": "^4.13.4"
   }
 }
