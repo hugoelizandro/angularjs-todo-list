@@ -1,0 +1,6 @@
+<div class="alert alert-dismissible" ng-repeat="alert in vm.alertList" ng-class="'alert-'+alert.type">
+    <button type="button" class="close" ng-click="vm.removeAlert($index)" aria-label="Fechar">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <span>{{::alert.content}}</span>
+</div>

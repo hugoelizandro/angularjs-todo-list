@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>TODO-SB</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="app/font.css" rel="stylesheet" />
+    <link href="app/app.css" rel="stylesheet" />
+  </head>
+  <body ng-app="App">
+    
+    <div class="alertbox">
+        <alert-msg alert-list='alerts'></alert-msg>
+    </div>
+
+    <!-- Navigation -->
+    <section ng-include="'app/template/navigation.template.html'"></section>
+
+    <!--  Main  -->
+    <section ng-include="'app/home/home.template.html'" ng-controller="HomeController as vm"></section>
+
+    <!-- Footer -->
+    <section ng-include="'app/template/footer.template.html'"></section>
+
+    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="components/angular/angular.min.js"></script>
+        
+    <script src="app/app.js"></script>
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/directives/alert-msg/alert-msg.controller.js"></script>
+    <script src="app/directives/alert-msg/alert-msg.directive.js"></script>
+    <script src="app/directives/alert-msg/alert-msg.service.js"></script>
+    <script src="app/directives/scroll-top/scroll-top.directive.js"></script>
+
+  </body>
+</html>

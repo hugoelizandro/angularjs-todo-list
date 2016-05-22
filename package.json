@@ -1,0 +1,25 @@
+{
+  "name": "todo-sb",
+  "version": "1.0.0",
+  "description": "AngularJS CRUD",
+  "author": "Hugo Elizandro",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hugoelizandro/todo-sb.git"
+  },
+  "scripts": {
+    "start": "node server",
+    "test": "karma start --single-run"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-ng-html2js-preprocessor": "^1.0.0"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}

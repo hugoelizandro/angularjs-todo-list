@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'robotoslab';
+    src: url('../fonts/robotoslab-regular.eot');
+    src: url('../fonts/robotoslab-regulard41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/robotoslab-regular.woff') format('woff'),
+         url('../fonts/robotoslab-regular.ttf') format('truetype'),
+         url('../fonts/robotoslab-regular.svg#robotoslab') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

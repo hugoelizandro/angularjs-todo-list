@@ -1,0 +1,61 @@
+<header class="hero-unit">
+  <div class="container">
+    <img src="images/angular.png" alt="AngularJS"/>
+  </div>
+</header>
+<div class="container">
+
+  <div class="row mb50 mt50">
+    <div class="col-md-offset-3 col-md-6">
+
+      <p>Preencha os campos para criar uma tarefa:</p>
+      <form novalidate name="taskForm" ng-submit="vm.submit(vm.task)">
+        <div class="form-group">
+          <input type="text" name="name" ng-model="vm.task.name" required class="form-control" placeholder="Nome" autofocus="autofocus">
+        </div>
+        <div class="form-group">
+          <textarea name="description" ng-model="vm.task.description" class="form-control no-resize" placeholder="Descrição">
+          </textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary pull-right" ng-disabled="taskForm.$invalid" ng-bind="vm.task.id? 'Editar': 'Cadastrar'"></button>
+          <button type="button" class="btn btn-info btn-cancel pull-right mr10" ng-if="vm.task.id" ng-click="vm.clear()">Cancelar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="row" ng-if="vm.tasklist.length">
+    <div class="col-md-12">
+      <input class="pull-right mb20" placeholder="buscar" ng-model="search">
+    </div>
+    <div class="col-md-12">
+
+      <div class="table-responsive">
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th class="mobile-size">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="task in vm.tasklist|orderBy:'name':false|filter:search track by $index">
+              <td ng-class="{'line-through': task.complete}">{{task.name}}</td>
+              <td ng-class="{'line-through': task.complete}" >{{task.description}}</td>
+              <td class="mobile-size">
+                <button type="button" class="btn btn-primary btn-complete mr10" title="Concluida" ng-click="vm.complete(task)"><i class="glyphicon glyphicon-check"></i></button>
+                <button type="button" class="btn btn-primary btn-edit mr10" title="Editar" ng-click="vm.show(task)" data-scroll-top><i class="glyphicon glyphicon-pencil"></i></button>
+                <button type="button" class="btn btn-primary btn-remove" title="Excluir" ng-click="vm.remove(task)"><i class="glyphicon glyphicon-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>
