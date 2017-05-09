@@ -2,26 +2,10 @@
   'use strict';
 
   window.X = function (response) {
-    console.log(response);
-//    <div class="carousel-item">
-//            <div class="box">
-//              <a href="http://www.pontofrio.com.br/tablets/Tablet/TabletAndroid/Tablet-DL-Everest-EV-T71-PRE-com-Tela-7”-4GB-Camera-2MP-Wi-Fi-Suporte-a-Modem-3G-e-Android-4-0-1768491.html" target="_blank">
-//                <div class="image">
-//                  <img src="http://imagens.pontofrio.com.br/Control/ArquivoExibir.aspx?IdArquivo=6665633" alt="">
-//                </div>
-//                <div class="info">
-//                  <p class="name">Tablet Smart DL HD7 Kids K71 com 4GB, Wi-Fi, Tela 7", Câmera 2MP, Cabo USB, Suporte à Modem 3G, Slot para Cartão e Android 4.0 – Chumbo</p>
-//                  <p class="old-price">De: <span>R$ 699,00</span></p>
-//                  <p class="price">Por: <strong>R$ 499,00</strong></p>
-//                  <p class="conditions">ou <strong>12X</strong> de <strong> 41.58</strong></p>
-//                </div>
-//              </a>
-//            </div>
-//          </div>
-
-
-    response.data.recommendation.forEach(function (element, index) {
-      var parentElement = document.querySelector('.carousel-container');
+    console.log(response)
+    
+    var createProductDOM = function(element, parent){
+      var parentElement = document.querySelector(parent);
       var productItem = document.createElement('div');
       productItem.className = 'carousel-item';
       
@@ -51,7 +35,7 @@
       
       var productName = document.createElement('p');
       productName.className = 'name';
-      productName.innerHTML = element.name;
+      productName.innerHTML = element.name.substr(0, 80) + '...';
       productInfo.appendChild(productName);
       
       if(element.oldPrice){
@@ -73,9 +57,19 @@
         productInfo.appendChild(productConditions);
       }
       
+      var productAddon = document.createElement('p');
+      productAddon.className = 'addon';
+      productAddon.innerHTML = 'sem juros';
+      productInfo.appendChild(productAddon);
+      
       productLink.appendChild(productInfo);
       
       parentElement.appendChild(productItem);
+    };
+
+    createProductDOM(response.data.reference.item, '.reference');
+    response.data.recommendation.forEach(function (element, index) {
+      createProductDOM(element, '.carousel-container');
     });
 
     var carousel = new Carousel('.carousel-container', {steps: 3});

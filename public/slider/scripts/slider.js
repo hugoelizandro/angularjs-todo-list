@@ -187,22 +187,10 @@
       index = 0;
     }
     currentIndex = index;
-    console.log(viewportElement.offsetWidth);
-    console.log(slideWidth * index);
-    console.log(sliderElement.offsetWidth);
 
     // moving slider
     sliderElement.style.left = '-' + (slideWidth * index) + 'px';
 
-    buttons.forEach(function (button) {
-//      if (button.getAttribute('data-carousel-index') === currentIndex.toString()) {
-//        // adding active class
-//        button.className = 'carousel-navbutton active';
-//      } else {
-//        // removing active class
-//        button.className = 'carousel-navbutton';
-//      }
-    });
   }
 
 
