@@ -66,11 +66,25 @@
 
 .carousel .prev{
   left: 210px;
+  transition: all ease-in-out .2s;
   background: url('../img/prev.png') no-repeat center;
+}
+.carousel .prev.disabled{
+  background: url('../img/prev.png') no-repeat center !important;
+}
+.carousel .prev:hover{
+  background: url('../img/prev-h.png') no-repeat center;
 }
 .carousel .next{
   right: 5px;
+  transition: all ease-in-out .2s;
   background: url('../img/next.png') no-repeat center;
+}
+.carousel .next.disabled{
+  background: url('../img/next.png') no-repeat center !important;
+}
+.carousel .next:hover{
+  background: url('../img/next-h.png') no-repeat center;
 }
 .carousel .reference{
   width: 190px;

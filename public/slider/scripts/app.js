@@ -2,8 +2,6 @@
   'use strict';
 
   window.X = function (response) {
-    console.log(response)
-    
     var createProductDOM = function(element, parent){
       var parentElement = document.querySelector(parent);
       var productItem = document.createElement('div');
@@ -35,7 +33,7 @@
       
       var productName = document.createElement('p');
       productName.className = 'name';
-      productName.innerHTML = element.name.substr(0, 80) + '...';
+      productName.innerHTML = element.name.substr(0, 80) + ' ...';
       productInfo.appendChild(productName);
       
       if(element.oldPrice){
@@ -54,6 +52,8 @@
         var productConditions = document.createElement('p');
         productConditions.className = 'conditions';
         productConditions.innerHTML = element.productInfo.paymentConditions;
+        var plots = parseFloat(productConditions.getElementsByTagName("strong")[1].innerHTML).toString().replace('.', ',');
+        productConditions.getElementsByTagName("strong")[1].innerHTML = 'R$ '+plots;
         productInfo.appendChild(productConditions);
       }
       
@@ -72,7 +72,7 @@
       createProductDOM(element, '.carousel-container');
     });
 
-    var carousel = new Carousel('.carousel-container', {steps: 3});
+    var carousel = new Carousel('.carousel-container');
     carousel.init();
   };
 

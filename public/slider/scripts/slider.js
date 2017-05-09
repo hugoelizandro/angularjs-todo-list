@@ -6,11 +6,11 @@
 
   var viewportElement;
   var sliderElement;
+  var prevBtn;
+  var nextBtn;
 
   var slideWidth = 0;
   var currentIndex = 0;
-
-  var config = {};
 
   var xTouch;
 
@@ -48,8 +48,7 @@
    * @param {object} options
    * @constructor
    */
-  function Carousel(elementSelector, options) {
-    config.steps = options.steps || 1;
+  function Carousel(elementSelector) {
     parentElement = document.querySelector(elementSelector);
   }
 
@@ -129,8 +128,8 @@
    * Creates and places the navbuttons
    */
   function setupNavbuttons() {
-    var prevBtn = document.createElement('a');
-    prevBtn.className = 'prev';
+    prevBtn = document.createElement('a');
+    prevBtn.className = 'prev disabled';
 
     buttons.push(prevBtn);
     parentElement.appendChild(prevBtn);
@@ -140,8 +139,8 @@
       prev();
     });
     
-    var nextBtn = document.createElement('a');
-    nextBtn.className = 'next';
+    nextBtn = document.createElement('a');
+    nextBtn.className = 'next disabled';
 
     buttons.push(nextBtn);
     parentElement.appendChild(nextBtn);
@@ -183,14 +182,29 @@
       index = elements.length - 1;
     }
 
+    // reset
     if((viewportElement.offsetWidth + (slideWidth * index)) > sliderElement.offsetWidth){
       index = 0;
     }
+    
+    
     currentIndex = index;
 
     // moving slider
     sliderElement.style.left = '-' + (slideWidth * index) + 'px';
 
+    // next classes
+    if((slideWidth * elements.length) > viewportElement.offsetWidth){
+      nextBtn.className = 'next';
+    }else{
+      nextBtn.className = 'next disabled';
+    }
+    // prev classes
+    if(sliderElement.style.left.slice(0, -2) < 0){
+      prevBtn.className = 'prev';
+    }else{
+      prevBtn.className = 'prev disabled';
+    }
   }
 
 
